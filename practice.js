@@ -136,3 +136,79 @@ const user = {
 const jsButton = document.querySelector(".js-button");
 user.showName();
 jsButton.addEventListener("click", user.showName.bind(user));
+
+// element.removeEventListener()
+
+const addBtn = document.querySelector("button[data-action='add']");
+
+const removeBtn = document.querySelector("button[data-action='remove']");
+
+const buton = document.querySelector("#btn");
+
+const handleClick = () => {
+  alert("Hello world!");
+};
+
+addBtn.addEventListener("click", () =>
+  buton.addEventListener("click", handleClick)
+);
+
+removeBtn.addEventListener("click", () =>
+  buton.removeEventListener("click", handleClick)
+);
+
+// Объект события
+
+const handlClick = (event) => {
+  console.log("event: ", event);
+  console.log("event-type: ", event.type);
+  console.log("this: ", this);
+  console.log("event-target: ", event.target);
+};
+buton.addEventListener("click", handlClick);
+
+// Submit
+
+const form = document.querySelector(".form");
+const logInput = document.querySelector("input[type='text']");
+const passInput = document.querySelector("input[type='password']");
+
+form.addEventListener("submit", handleSubmit);
+function handleSubmit(event) {
+  event.preventDefault();
+  const login = logInput.value.trim();
+  const password = passInput.value.trim();
+  if (login === "" || password === "") {
+    return alert("Please enter login and password");
+  }
+  form.reset();
+  alert(`Welcome! Your login: ${login}, your password: ${password}`);
+}
+
+// KeyboardEvent.key и KeyboardEvent.code
+
+const clearLogBtn = document.querySelector('button[data-action="clear"]');
+const logList = document.querySelector(".log-list");
+
+window.addEventListener("keydown", logMessage);
+window.addEventListener("keyup", logMessage);
+
+clearLogBtn.addEventListener("click", (e) => {
+  logList.innerHTML = "";
+});
+
+function logMessage({ type, key, code }) {
+  const message = document.createElement("section");
+  const title = document.createElement("h2");
+  title.textContent = `${type} event`;
+
+  const text = document.createElement("p");
+  text.textContent = `key value is "${key}" | code value is "${code}"`;
+
+  message.append(title, text);
+  logList.appendChild(message);
+}
+
+//  Attributes defer and async
+
+// <scrypt src="practice.js" defer> </script>
