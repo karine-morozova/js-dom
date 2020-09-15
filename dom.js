@@ -66,3 +66,9 @@ console.log(picture.getAttribute("alt"));
 
 const saveBtn = document.querySelector('.editor button[data-action="save"]');
 const closeBtn = document.querySelector('.editor button[data-action="close"]');
+
+const dataSaveBtn = saveBtn.dataset.action;
+console.log(dataSaveBtn);
+
+const dataCloseBtn = closeBtn.dataset.action;
+console.log(dataCloseBtn);
