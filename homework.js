@@ -54,11 +54,72 @@ const images = [
     alt: "Group of Horses Running",
   },
 ];
+const galleryEl = document.querySelector("#gallery");
 
-for (let image of images)
-  document
-    .querySelector("#gallery")
-    .insertAdjacentHTML(
-      "beforeEnd",
-      `<li><img src="${image.url}" alt="${image.alt}"></li>`
-    );
+images.forEach((image) => {
+  galleryEl.insertAdjacentHTML(
+    "beforeEnd",
+    `<li><img src="${image.url}" alt="${image.alt}"></li>`
+  );
+});
+
+// 4
+
+const incrementBtnEl = document.querySelector('[data-action="increment"]');
+const decrementBtnEl = document.querySelector('[data-action="decrement"]');
+const valueEl = document.querySelector("#value");
+let counterValue = 0;
+
+incrementBtnEl.addEventListener("click", onIncrementClick);
+decrementBtnEl.addEventListener("click", onDecrementClick);
+
+function onIncrementClick(event) {
+  counterValue += 1;
+  valueEl.textContent = counterValue;
+}
+onIncrementClick();
+
+function onDecrementClick(event) {
+  counterValue -= 1;
+  valueEl.textContent = counterValue;
+}
+
+// 5
+
+const inputEl = document.querySelector("#name-input");
+const nameOutputEl = document.querySelector("#name-output");
+
+inputEl.addEventListener("input", onNameOutput);
+function onNameOutput(event) {
+  nameOutputEl.textContent = event.currentTarget.value;
+}
+
+// 6
+
+const validInputEl = document.querySelector("#validation-input");
+
+validInputEl.addEventListener("blur", onInputValueCheck);
+
+function onInputValueCheck(event) {
+  if (
+    event.currentTarget.getAttribute("data-length") >
+    event.currentTarget.value.length
+  ) {
+    validInputEl.classList.add("invalid");
+    validInputEl.classList.remove("valid");
+  } else {
+    validInputEl.classList.add("valid");
+    validInputEl.classList.remove("invalid");
+  }
+}
+
+// 7
+
+const inputRangeEl = document.querySelector("#font-size-control");
+const textEl = document.querySelector("#text");
+
+inputRangeEl.addEventListener("input", onInputFontSize);
+
+function onInputFontSize(event) {
+  textEl.style.fontSize = event.currentTarget.value + "px";
+}
