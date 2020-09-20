@@ -1,19 +1,18 @@
-// const itemEl = document.querySelectorAll(".item");
+const itemEl = document.querySelectorAll(".item");
 
-// const categories = `'В списке ${itemEl.length} категории.'`;
-// console.log(categories);
-// const category = (array) => {
-//   array.forEach((element) => {
-//     const title = element.querySelector("h2");
+const categories = `'В списке ${itemEl.length} категории.'`;
+console.log(categories);
+const category = (array) => {
+  array.forEach((element) => {
+    const title = element.querySelector("h2");
 
-//     const itemEl = element.querySelectorAll("li");
+    const itemEl = element.querySelectorAll("li");
 
-//     const message = `Категория: ${title.textContent}. Количество элементов: ${itemEl.length}.`;
-//     console.log(message);
-//     // return message;
-//   });
-// };
-// category(itemEl);
+    const message = `Категория: ${title.textContent}. Количество элементов: ${itemEl.length}.`;
+    console.log(message);
+  });
+};
+category(itemEl);
 
 // 2 задача
 
@@ -59,7 +58,7 @@ const galleryEl = document.querySelector("#gallery");
 images.forEach((image) => {
   galleryEl.insertAdjacentHTML(
     "beforeEnd",
-    `<li><img src="${image.url}" alt="${image.alt}"></li>`
+    `<li><img src="${image.url}" class="image" alt="${image.alt}"></li>`
   );
 });
 
